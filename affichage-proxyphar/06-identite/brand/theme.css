@@ -1,0 +1,8 @@
+/*
+ * Thème PROXYPHAR — /opt/affichage/shared/cms/library/brand/theme.css
+ * Couleurs relevées sur le logo PROXYPHAR : violet et rose.
+ */
+:root {
+  --brand-primary: #6B2D90;
+  --brand-accent: #E6007E;
+}

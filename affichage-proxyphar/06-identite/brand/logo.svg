@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="690" height="200" viewBox="0 0 690 200">
+  <!-- Reproduction vectorielle du logo PROXYPHAR (monogramme et mot-symbole).
+       Couleurs : violet #6B2D90, rose #E6007E. Remplacer par le fichier officiel
+       (logo.svg ou logo.png) dès qu'il est disponible : 06-identite/appliquer-theme.sh. -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="22">
+    <!-- « p » violet : anneau arrondi et jambage à gauche -->
+    <path d="M300 22 h60 a22 22 0 0 1 22 22 v44 a22 22 0 0 1 -22 22 h-60 a22 22 0 0 1 -22 -22 v-44 a22 22 0 0 1 22 -22 z" stroke="#6B2D90"/>
+    <path d="M278 88 v58" stroke="#6B2D90"/>
+    <!-- « q » rose : anneau arrondi et jambage à droite -->
+    <path d="M338 22 h60 a22 22 0 0 1 22 22 v44 a22 22 0 0 1 -22 22 h-60 a22 22 0 0 1 -22 -22 v-44 a22 22 0 0 1 22 -22 z" stroke="#E6007E"/>
+    <path d="M420 88 v58" stroke="#E6007E"/>
+    <!-- entrelacement : le violet repasse devant sur la partie haute -->
+    <path d="M338 22 h22" stroke="#6B2D90"/>
+    <path d="M316 66 v22 a22 22 0 0 0 22 22" stroke="#6B2D90"/>
+  </g>
+  <text x="18" y="184" font-family="Arial Rounded MT Bold, Arial, Helvetica, sans-serif" font-size="84" font-weight="700" letter-spacing="-2">
+    <tspan fill="#6B2D90">Proxy</tspan><tspan fill="#E6007E">phar</tspan>
+  </text>
+  <text x="404" y="196" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#E6007E">Plus proche du pharmacien</text>
+</svg>
