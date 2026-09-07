@@ -8,6 +8,7 @@ set -o pipefail
 
 AFFICHAGE_DIR="${AFFICHAGE_DIR:-/opt/affichage}"
 AFFICHAGE_DOMAINE="${AFFICHAGE_DOMAINE:-intranet.proxyphar.fr}"
+# Adresses du VPS : à remplacer par celles du VPS neuf dès sa livraison (voir GUIDE-EXECUTION.md).
 AFFICHAGE_IPV4="${AFFICHAGE_IPV4:-51.75.251.209}"
 AFFICHAGE_IPV6="${AFFICHAGE_IPV6:-2001:41d0:305:2100::a4c4}"
 AFFICHAGE_ADMIN_OS="${AFFICHAGE_ADMIN_OS:-proxyadmin}"

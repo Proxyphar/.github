@@ -7,7 +7,7 @@ Décisions acquises le 7 septembre 2026 :
 
 | Point | Décision |
 |-------|----------|
-| Réinstallation du VPS | validée, l'instance « bubu.re » est effacée |
+| Serveur | **VPS neuf** commandé dans le compte PROXYPHAR ; l'ancien VPS `vps-322ffb27`, administré par un tiers, est abandonné (décision du 7 septembre 2026, 22 h) |
 | Enregistrements DNS `intranet` | validés |
 | Exécution du kit | Alexandre, avec ce guide |
 | Identité et messagerie | logo PROXYPHAR, messagerie Google des boîtes actuelles |
@@ -19,8 +19,12 @@ Règles pendant toute l'exécution :
   transmettez-le-moi avant de passer à l'étape suivante ; j'analyse et je donne le feu vert.
 - **Aucun mot de passe dans nos échanges.** Les identifiants générés vont dans le coffre
   de mots de passe du service, jamais dans le chat, jamais dans un e-mail.
-- **Rien n'est irréversible sauf l'étape 0d**, déjà validée. En cas de doute sur un
-  résultat, arrêtez-vous et envoyez-moi la sortie complète de la commande.
+- **Rien n'est irréversible.** En cas de doute sur un résultat, arrêtez-vous et
+  envoyez-moi la sortie complète de la commande.
+- **Adresses du serveur** : les adresses `51.75.251.209` et `2001:41d0:305:2100::a4c4` citées
+  dans ce guide et dans le kit sont celles de l'ancien VPS. Elles seront remplacées par
+  celles du VPS neuf dès sa livraison, dans une mise à jour du kit ; ne lancez pas l'étape
+  0e avant cette mise à jour.
 
 Durée totale estimée : une demi-journée, hors délais d'attente OVH et DNS.
 
@@ -57,17 +61,8 @@ Où : votre poste Windows, dans **PowerShell**.
    stocker : votre nom en haut à droite, **Mes offres & services**, section
    **Mes services**, **Clés SSH**, **Ajouter une clé SSH**, type **Dédié**, puis la ligne.
 
-5. Créez le fichier `$env:USERPROFILE\.ssh\config` avec le Bloc-notes, contenu :
-
-   ```
-   Host affichage
-       HostName 51.75.251.209
-       User ubuntu
-       IdentityFile ~/.ssh/proxyphar-affichage
-       IdentitiesOnly yes
-   ```
-
-   Après l'étape 2, remplacez `User ubuntu` par `User proxyadmin`.
+5. Le raccourci `affichage` du fichier `.ssh\config` sera créé à l'étape 0d ter, une fois
+   l'adresse du VPS neuf connue.
 
 À me transmettre : « clé générée », rien d'autre. La clé privée reste sur votre poste.
 
@@ -98,33 +93,62 @@ l'adresse IP 51.75.251.209 dans la console d'administration ; dites-le-moi, j'ad
 
 À me transmettre : l'adresse de la boîte expéditrice.
 
-## Étape 0d — Réinstallation du VPS (20 min, action irréversible validée)
+## Étape 0d — Commande du VPS neuf (20 min, plus délai de livraison)
 
-Où : manager OVHcloud, **Bare Metal Cloud**, **Serveurs privés virtuels**.
+Où : espace client OVHcloud, avec l'identifiant PROXYPHAR qui gère le domaine `proxyphar.fr`.
 
-1. Sélectionnez `vps-322ffb27.vps.ovh.net`. Dans l'onglet **Accueil**, bloc
-   **OS / Distribution**, cliquez sur le bouton `...` puis **Réinstaller mon VPS**.
-2. Système : **Ubuntu 24.04**, sans image applicative.
-3. Champ **Votre clé SSH Publique** : collez la ligne de la clé publique de l'étape 0a,
-   sur une seule ligne. Si vous l'aviez stockée dans l'espace client, choisissez-la dans
-   **Clé SSH à pré-installer**.
-4. Cochez **Je ne souhaite pas recevoir par e-mail les codes d'authentification de mon
-   VPS** : l'accès se fera par clé uniquement, aucun mot de passe temporaire ne circulera.
-5. Confirmez. OVH avertit que tous les disques seront formatés : c'est l'effet attendu.
-   Attendez l'e-mail de fin de réinstallation ; l'utilisateur de connexion est `ubuntu`.
+1. **Bare Metal Cloud**, **Commander**, **VPS**, ou https://www.ovhcloud.com/fr/vps/.
+2. Gamme : l'offre la plus proche de 2 vCores, 4 Go de RAM et 80 Go de disque ; une offre
+   supérieure convient aussi, signalez-la-moi pour ajuster les limites du kit.
+3. Localisation : **Gravelines (GRA)**, ou Strasbourg si GRA est indisponible.
+4. Système : **Ubuntu 24.04**.
+5. Option **Sauvegarde automatisée** : oui. Snapshot et disque additionnel : non.
+6. Clé SSH : si la commande propose un champ de clé publique, collez la ligne du fichier
+   `.pub` de l'étape 0a. Sinon, passez : la clé sera posée par une réinstallation.
+7. Validez la commande. La livraison prend de quelques minutes à une heure ; un e-mail
+   indique le nom du VPS, de la forme `vps-xxxxxxxx.vps.ovh.net`, et l'utilisateur `ubuntu`.
 
-Puis, dans PowerShell, oubliez l'ancienne empreinte du serveur et connectez-vous :
+À me transmettre, dès l'e-mail reçu : le nom du VPS, l'IPv4 et l'IPv6 lues dans le bloc
+**IP** de la page du VPS, et si la clé a été fournie à la commande. Je mets alors le kit
+à jour avec ces adresses et je vous donne le feu vert pour la suite.
+
+### 0d bis — Réinstallation avec la clé, seulement si la clé n'a pas été fournie à la commande
+
+Page du VPS neuf, bloc **OS / Distribution**, bouton `...`, **Réinstaller mon VPS** :
+`Ubuntu 24.04`, collez la ligne du fichier `.pub` dans **Votre clé SSH Publique**, cochez
+**Je ne souhaite pas recevoir par e-mail les codes d'authentification de mon VPS**,
+**Confirmer**. Attendez l'e-mail de fin de réinstallation. Le VPS étant dans votre compte,
+la demande est acceptée.
+
+### 0d ter — Première connexion
+
+Remplacez `ADRESSE_IPV4` par l'adresse du VPS neuf.
+
+Dans PowerShell :
 
 ```powershell
-ssh-keygen -R 51.75.251.209
-ssh-keygen -R vps-322ffb27.vps.ovh.net
-ssh affichage
+ssh -i C:\Users\Alexandre\.ssh\proxyphar-affichage ubuntu@ADRESSE_IPV4
 ```
 
-Répondez `yes` à la question sur l'empreinte du nouveau serveur. Vous devez obtenir une
-invite `ubuntu@vps-322ffb27:~$`. Tapez `exit`.
+Répondez `yes` à la question sur l'empreinte du serveur, saisissez la phrase de passe de
+votre clé quand `Enter passphrase for key` apparaît. Vous devez obtenir une invite
+`ubuntu@vps-xxxxxxxx:~$`. Vérifiez `sudo -i`, puis tapez `exit` deux fois. En cas de
+demande de mot de passe, la ligne `remote software version` d'un `ssh -v` doit contenir
+`OpenSSH_9.6p1` : sinon vous n'êtes pas sur le bon serveur.
 
-À me transmettre : l'heure de fin de réinstallation et « connexion ubuntu OK ».
+Créez ensuite le raccourci, en remplaçant `ADRESSE_IPV4` :
+
+```powershell
+@"
+Host affichage
+    HostName ADRESSE_IPV4
+    User ubuntu
+    IdentityFile C:\Users\Alexandre\.ssh\proxyphar-affichage
+    IdentitiesOnly yes
+"@ | Set-Content -Path C:\Users\Alexandre\.ssh\config -Encoding ascii
+```
+
+À me transmettre : « connexion ubuntu OK, sudo OK ».
 
 ## Étape 0e — Copier le kit sur le VPS (10 min)
 
@@ -440,7 +464,7 @@ déploiement, avec les versions figées et l'état de chaque contrôle.
 | 0a | « clé générée » |
 | 0b | nom du conteneur et endpoint S3 |
 | 0c | adresse de la boîte expéditrice |
-| 0d | heure de fin de réinstallation, « connexion ubuntu OK » |
+| 0d | nom du VPS, IPv4, IPv6, clé fournie ou non ; puis « connexion ubuntu OK, sudo OK » |
 | 0e | sortie de `ls /opt/affichage-kit` |
 | 1 | bloc PALIER 1 à 0 écart |
 | 2 | bloc PALIER 2, « connexion proxyadmin OK, ubuntu verrouillé » |

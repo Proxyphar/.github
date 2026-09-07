@@ -1,4 +1,10 @@
-# Étape 0b — Réinstallation du VPS depuis le manager OVH
+# Étape 0b — Serveur : VPS neuf, ou réinstallation
+
+> **Décision du 7 septembre 2026** : l'ancien VPS `vps-322ffb27` est administré par un
+> tiers (NIC `pd831792-ovh`) et ne peut pas être réinstallé depuis le compte PROXYPHAR.
+> Un VPS neuf est commandé dans le compte PROXYPHAR ; la procédure de commande est dans
+> `GUIDE-EXECUTION.md`, étape 0d. La réinstallation ci-dessous ne sert plus qu'à poser la
+> clé SSH sur le VPS neuf si elle n'a pas été fournie à la commande.
 
 > **Action irréversible.** Elle efface l'intégralité du disque du VPS, donc l'instance
 > Xibo 3.3.2 « bubu.re » et toutes ses données. Elle n'est lancée qu'après validation
