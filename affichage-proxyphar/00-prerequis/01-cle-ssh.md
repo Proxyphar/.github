@@ -26,13 +26,16 @@ cat ~/.ssh/proxyphar-affichage.pub
 
 Elle ressemble à `ssh-ed25519 AAAAC3... proxyphar-affichage-admin` (une seule ligne).
 
-## Déposer la clé publique dans le manager OVH
+## Utiliser la clé publique chez OVH
 
-1. Manager OVHcloud > icône du compte (en haut à droite) > **Mon compte**.
-2. Onglet **Clés SSH** > **Ajouter une clé SSH**.
-3. Nom : `proxyphar-affichage-admin`. Collez la ligne complète de la clé publique. Validez.
+Deux possibilités, documentées par OVHcloud :
 
-Cette clé sera proposée lors de la réinstallation du VPS (étape 0b).
+- **Directement lors de la réinstallation** (étape 0b) : le formulaire « Réinstaller mon
+  VPS » comporte un champ « Votre clé SSH Publique ». Collez-y la ligne complète.
+- **En la stockant dans l'espace client** : votre nom en haut à droite, **Mes offres &
+  services**, section **Mes services**, **Clés SSH**, **Ajouter une clé SSH**, type
+  **Dédié**, label `proxyphar-affichage-admin`, puis la ligne complète, **Valider**. La
+  clé apparaît ensuite dans la liste « Clé SSH à pré-installer » du formulaire.
 
 ## Configurer le client SSH (facultatif mais recommandé)
 

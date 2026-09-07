@@ -51,9 +51,11 @@ Où : votre poste Windows, dans **PowerShell**.
    Get-Content "$env:USERPROFILE\.ssh\proxyphar-affichage.pub"
    ```
 
-4. Manager OVHcloud, icône du compte en haut à droite, **Mon compte**, onglet
-   **Clés SSH**, **Ajouter une clé SSH** : nom `proxyphar-affichage-admin`, collez la
-   ligne, validez.
+4. Gardez cette ligne sous la main : elle sera collée directement dans le formulaire de
+   réinstallation du VPS, étape 0d, champ « Votre clé SSH Publique ». Il n'est pas
+   nécessaire de l'enregistrer au préalable dans l'espace client. Si vous préférez la
+   stocker : votre nom en haut à droite, **Mes offres & services**, section
+   **Mes services**, **Clés SSH**, **Ajouter une clé SSH**, type **Dédié**, puis la ligne.
 
 5. Créez le fichier `$env:USERPROFILE\.ssh\config` avec le Bloc-notes, contenu :
 
@@ -67,7 +69,7 @@ Où : votre poste Windows, dans **PowerShell**.
 
    Après l'étape 2, remplacez `User ubuntu` par `User proxyadmin`.
 
-À me transmettre : « clé déposée chez OVH », rien d'autre. La clé privée reste sur votre poste.
+À me transmettre : « clé générée », rien d'autre. La clé privée reste sur votre poste.
 
 ## Étape 0b — Object Storage GRA (15 min)
 
@@ -100,11 +102,16 @@ l'adresse IP 51.75.251.209 dans la console d'administration ; dites-le-moi, j'ad
 
 Où : manager OVHcloud, **Bare Metal Cloud**, **Serveurs privés virtuels**.
 
-1. Sélectionnez `vps-322ffb27.vps.ovh.net`, bloc « Réinstaller votre VPS ».
-2. Système **Ubuntu 24.04 LTS**, sans image applicative.
-3. Clé SSH : `proxyphar-affichage-admin`.
-4. Confirmez. Attendez l'e-mail de fin de réinstallation, qui indique l'utilisateur de
-   connexion, `ubuntu` sur cette image.
+1. Sélectionnez `vps-322ffb27.vps.ovh.net`. Dans l'onglet **Accueil**, bloc
+   **OS / Distribution**, cliquez sur le bouton `...` puis **Réinstaller mon VPS**.
+2. Système : **Ubuntu 24.04**, sans image applicative.
+3. Champ **Votre clé SSH Publique** : collez la ligne de la clé publique de l'étape 0a,
+   sur une seule ligne. Si vous l'aviez stockée dans l'espace client, choisissez-la dans
+   **Clé SSH à pré-installer**.
+4. Cochez **Je ne souhaite pas recevoir par e-mail les codes d'authentification de mon
+   VPS** : l'accès se fera par clé uniquement, aucun mot de passe temporaire ne circulera.
+5. Confirmez. OVH avertit que tous les disques seront formatés : c'est l'effet attendu.
+   Attendez l'e-mail de fin de réinstallation ; l'utilisateur de connexion est `ubuntu`.
 
 Puis, dans PowerShell, oubliez l'ancienne empreinte du serveur et connectez-vous :
 
@@ -430,7 +437,7 @@ déploiement, avec les versions figées et l'état de chaque contrôle.
 
 | Étape | Transmission |
 |-------|--------------|
-| 0a | « clé déposée chez OVH » |
+| 0a | « clé générée » |
 | 0b | nom du conteneur et endpoint S3 |
 | 0c | adresse de la boîte expéditrice |
 | 0d | heure de fin de réinstallation, « connexion ubuntu OK » |

@@ -6,19 +6,20 @@
 
 ## Avant de lancer
 
-- [ ] La clé publique `proxyphar-affichage-admin` est déposée dans le manager (étape 0a).
+- [ ] La clé publique `proxyphar-affichage-admin` est générée et prête à être collée (étape 0a).
 - [ ] Il est acté qu'aucune donnée de l'instance actuelle ne doit être conservée.
 - [ ] Le service concerné est bien `vps-322ffb27.vps.ovh.net` (51.75.251.209).
 
 ## Procédure (manager OVHcloud)
 
 1. **Bare Metal Cloud** > **Serveurs privés virtuels** > `vps-322ffb27.vps.ovh.net`.
-2. Onglet **Accueil** > bloc « Réinstaller votre VPS » (ou menu `...` > **Réinstaller**).
-3. Système : **Ubuntu** > **24.04 LTS**. Ne pas choisir d'image applicative.
-4. Clé SSH : sélectionner `proxyphar-affichage-admin`.
-5. Confirmer. La réinstallation dure en général de 5 à 15 minutes ; un e-mail de fin
-   précise l'utilisateur de connexion (sur les images Ubuntu OVHcloud : `ubuntu`, sans
-   mot de passe root).
+2. Onglet **Accueil**, bloc **OS / Distribution**, bouton `...` > **Réinstaller mon VPS**.
+3. Système : **Ubuntu 24.04**. Ne pas choisir d'image applicative.
+4. Clé SSH : coller la clé publique dans **Votre clé SSH Publique**, ou la choisir dans
+   **Clé SSH à pré-installer** si elle a été stockée dans l'espace client.
+5. Cocher **Je ne souhaite pas recevoir par e-mail les codes d'authentification de mon VPS**.
+6. Confirmer. La réinstallation dure en général de 5 à 15 minutes ; un e-mail de fin
+   précise l'utilisateur de connexion (`ubuntu` sur les images Ubuntu ; root est désactivé).
 
 ## Première connexion
 
