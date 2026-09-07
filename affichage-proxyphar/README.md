@@ -58,12 +58,17 @@ Après l'étape 2, la connexion se fait avec l'utilisateur `proxyadmin`.
 
 Chaque script accepte `--aide` et décrit ce qu'il va faire avant d'agir.
 
+## Guide d'exécution
+
+`GUIDE-EXECUTION.md` détaille chaque étape, commande par commande, avec ce qu'il faut
+vérifier et transmettre à chaque palier. C'est le document à suivre pour dérouler le kit.
+
 ## Visuels
 
-`06-identite/brand/` contient des visuels **provisoires** (SVG versionnés ; les fichiers
-bitmap `favicon.ico`, `192x192.png`, `512x512.png` sont générés sur le VPS par
-`generer-placeholders.py`). Les remplacer par la charte PROXYPHAR avec
-`appliquer-theme.sh --source <dossier>`.
+`06-identite/brand/` contient une reproduction vectorielle du logo PROXYPHAR aux couleurs
+officielles, violet `#6B2D90` et rose `#E6007E`. Les bitmaps `favicon.ico`, `192x192.png`
+et `512x512.png` sont générés sur le VPS par `generer-placeholders.py`. Un fichier officiel
+déposé dans ce dossier, `logo.png` ou `logo.svg`, est pris en compte par `appliquer-theme.sh`.
 
 ## Ce que le kit ne fait pas
 

@@ -21,10 +21,10 @@ les players doivent être ré-enrôlés. Elles sont dans l'archive externe.
 
 ## Destination externe
 
-Configurée avec `rclone config` (identifiants dans `/root/.config/rclone/rclone.conf`,
-droits 600, jamais dans le dépôt). Recommandation : conteneur **Object Storage OVHcloud**
-(S3, région GRA ou, mieux, une autre région) dédié, avec un utilisateur S3 limité à ce
-conteneur. Chiffrement possible au niveau de rclone (remote de type `crypt`) : dans ce
+Conteneur **Object Storage OVHcloud** S3 `proxyphar-affichage-sauvegardes`, région GRA, dans le
+compte PROXYPHAR, avec un utilisateur S3 limité au rôle ObjectStore operator. Création et
+déclaration sur le VPS : `/opt/affichage-kit/07-sauvegarde/object-storage-ovh.md`. Les
+identifiants sont dans `/root/.config/rclone/rclone.conf` (droits 600), jamais dans le dépôt. Chiffrement possible au niveau de rclone (remote de type `crypt`) : dans ce
 cas, la phrase secrète rclone doit être conservée au coffre, sinon les sauvegardes sont
 illisibles.
 

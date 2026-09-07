@@ -1,10 +1,8 @@
 /*
  * Thème PROXYPHAR — /opt/affichage/shared/cms/library/brand/theme.css
- * Xibo 4.5 lit deux variables de couleur. Les valeurs ci-dessous sont PROVISOIRES :
- * [À COMPLÉTER] avec les couleurs de la charte graphique PROXYPHAR, puis relancer
- * 06-identite/appliquer-theme.sh.
+ * Couleurs relevées sur le logo PROXYPHAR : violet et rose.
  */
 :root {
-  --brand-primary: #0b5d8a;
-  --brand-accent: #2fb3a3;
+  --brand-primary: #6B2D90;
+  --brand-accent: #E6007E;
 }

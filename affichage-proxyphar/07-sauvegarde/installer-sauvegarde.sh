@@ -7,8 +7,8 @@
 # - avec --executer : lance une première sauvegarde puis un test de restauration sur copie.
 #
 # Usage : sudo ./installer-sauvegarde.sh [--remote NOM:chemin] [--executer]
-#   --remote    valeur de BACKUP_REMOTE (ex. proxyphar-backup:affichage-intranet) ; le remote
-#               doit avoir été créé avec « rclone config » (identifiants hors dépôt)
+#   --remote    valeur de BACKUP_REMOTE (ex. proxyphar-backup:proxyphar-affichage-sauvegardes/intranet) ;
+#               le remote doit avoir été créé avec « rclone config » (voir object-storage-ovh.md)
 #   --executer  sauvegarde immédiate + restauration de test (peut prendre plusieurs minutes)
 
 KIT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

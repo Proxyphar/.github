@@ -19,6 +19,8 @@
   une application d'authentification (sans SMTP).
 - Aucun envoi d'e-mail tant que `CMS_SMTP_*` n'est pas complété dans `config.env` :
   pas de rappel de mot de passe, pas d'alerte de maintenance, pas de 2FA par e-mail.
+  L'envoi passe par la messagerie Google de PROXYPHAR avec un mot de passe d'application ;
+  si ce mot de passe est révoqué côté Google, les envois s'arrêtent sans alerte.
 
 ## Infrastructure
 
@@ -43,9 +45,9 @@
   renseigner `XMR_PUB_ADDRESS` = `tcp://intranet.proxyphar.fr:9505`. Non recommandé.
 - **Licences players** : les players Android, webOS et Tizen nécessitent une licence
   Xibo par écran ; le player Windows est gratuit. À prévoir dans l'offre aux officines.
-- **Identité** : les visuels livrés dans le kit sont **provisoires** (marqués
-  `PROVISOIRE`). Les remplacer par la charte PROXYPHAR via
-  `06-identite/appliquer-theme.sh --source <dossier>`. Le texte de licence AGPL reste
+- **Identité** : les logos du kit sont une reproduction vectorielle du logo PROXYPHAR,
+  aux couleurs officielles. Le fichier officiel, s'il est fourni en PNG ou SVG, se dépose
+  dans `06-identite/brand/` puis `06-identite/appliquer-theme.sh` est relancé. Le texte de licence AGPL reste
   affiché sur la page de connexion (`removeLicenceFromLogin: false`) : Xibo est un
   logiciel libre et cette mention fait partie de ses conditions d'utilisation.
 - **Xibo 4.5** a une nouvelle interface (React). Les anciens thèmes `web/theme/custom`

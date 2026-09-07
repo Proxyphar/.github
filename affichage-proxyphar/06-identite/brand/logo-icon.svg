@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <!-- Visuel PROVISOIRE - à remplacer par l'icône officielle PROXYPHAR -->
-  <rect x="4" y="4" width="88" height="88" rx="16" fill="#2FB3A3"/>
-  <path d="M30 22h24c12 0 20 7 20 17s-8 17-20 17H41v20H30z M41 32v14h12c5 0 8-3 8-7s-3-7-8-7z" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <!-- Monogramme PROXYPHAR seul (icône de menu, PWA). Remplacer par le fichier officiel dès que disponible. -->
+  <rect width="160" height="160" rx="28" fill="#FFFFFF"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">
+    <path d="M42 26 h44 a16 16 0 0 1 16 16 v32 a16 16 0 0 1 -16 16 h-44 a16 16 0 0 1 -16 -16 v-32 a16 16 0 0 1 16 -16 z" stroke="#6B2D90"/>
+    <path d="M26 74 v58" stroke="#6B2D90"/>
+    <path d="M74 26 h44 a16 16 0 0 1 16 16 v32 a16 16 0 0 1 -16 16 h-44 a16 16 0 0 1 -16 -16 v-32 a16 16 0 0 1 16 -16 z" stroke="#E6007E"/>
+    <path d="M134 74 v58" stroke="#E6007E"/>
+    <path d="M74 26 h14" stroke="#6B2D90"/>
+    <path d="M58 58 v16 a16 16 0 0 0 16 16" stroke="#6B2D90"/>
+  </g>
 </svg>

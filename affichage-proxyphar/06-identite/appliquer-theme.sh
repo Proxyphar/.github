@@ -7,8 +7,8 @@
 #   192x192.png, 512x512.png ; puis redémarre le CMS et vérifie via /about/config.
 #
 # Usage : sudo ./appliquer-theme.sh [--source DOSSIER]
-#   --source  dossier contenant les fichiers officiels de la charte (par défaut :
-#             06-identite/brand, qui contient des visuels PROVISOIRES à remplacer)
+#   --source  dossier contenant les fichiers de la charte (par défaut : 06-identite/brand,
+#             reproduction vectorielle du logo PROXYPHAR aux couleurs officielles)
 
 KIT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # shellcheck source=../lib/common.sh
@@ -22,8 +22,8 @@ while [ $# -gt 0 ]; do
   esac
 done
 exiger_root
-# Les visuels bitmap provisoires (favicon.ico, 192x192.png, 512x512.png) ne sont pas
-# versionnés : ils sont générés ici, à partir du script du kit, s'ils manquent.
+# Les visuels bitmap (favicon.ico, 192x192.png, 512x512.png) ne sont pas versionnés :
+# ils sont générés ici, aux couleurs du logo, s'ils manquent.
 if [ "$SOURCE" = "$KIT_DIR/06-identite/brand" ]; then
   for f in favicon.ico 192x192.png 512x512.png; do
     if [ ! -f "$SOURCE/$f" ]; then
@@ -55,8 +55,8 @@ for f in logo.png logo-dark.png logo-icon.png; do
   [ -f "$SOURCE/$f" ] && install -m 644 "$SOURCE/$f" "$BRAND/$f" && rm -f "$BRAND/${f%.png}.svg" && info "installé : $f (SVG d'origine retiré)"
 done
 chown -R www-data:www-data "$BRAND" 2>/dev/null || chown -R 33:33 "$BRAND"
-if grep -q 'PROVISOIRE' "$BRAND/logo.svg" 2>/dev/null; then
-  alerte "Le logo installé est le visuel PROVISOIRE du kit : remplacer par la charte officielle (--source)"
+if grep -q 'Reproduction vectorielle' "$BRAND/logo.svg" 2>/dev/null; then
+  info "Logo installé : reproduction vectorielle du kit. Déposer le fichier officiel (logo.png ou logo.svg) puis relancer avec --source si nécessaire."
 fi
 
 compose restart cms-memcached cms-web >/dev/null
